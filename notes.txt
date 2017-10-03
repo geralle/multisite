@@ -1,0 +1,47 @@
+// function heroSiteList(){
+//   var randSites = {};
+//   var randSitesList = [];
+//   return getData()
+//     .then(function(siteHero){
+//       for(var i=0;i<Object.keys(siteHero).length;i++){
+//         var randCatSite = Math.floor(Math.random()*siteHero[Object.keys(siteHero)[i]].length)
+//         randSites[Object.keys(siteHero)[i]] = siteHero[Object.keys(siteHero)[i]][randCatSite]
+//       }
+//       // console.log(randSites)
+//       for(var j=0;j<Object.keys(randSites).length;j++){
+//         randSitesList.push(articles + Object.values(randSites)[j][0]);
+//       }
+//       return randSitesList
+//   })
+// }
+
+// function appendHero(){
+//   heroSiteList()
+//     .then(function(siteList){
+//       for(var i=0;i<siteList.length;i++){
+//         var site = siteList[i]
+//         fetch(site).then(function(response){
+//           return response.json().then(function(heroArticle){
+//             var articleIndex = Math.floor(Math.random()*heroArticle.articles.length)
+//             author = heroArticle.articles[articleIndex].author
+//             title = heroArticle.articles[articleIndex].title
+//             articleImg = heroArticle.articles[articleIndex].urlToImage
+//             articleUrl = heroArticle.articles[articleIndex].url
+//             var divTag = document.createElement('div')
+//             var h3Tag = document.createElement('h3');
+//             var imgTag = document.createElement('img');
+//             var pTag = document.createElement('p');
+//             divTag.setAttribute('class','hero-entries')
+//             imgTag.setAttribute('src',articleImg)
+//             imgTag.setAttribute('class','hero-images')
+//             h3Tag.innerText=title
+//             checkNull(author, title, articleImg, articleUrl)
+//             heroEntry.append(divTag)
+//             divTag.append(imgTag)
+//             divTag.append(h3Tag)
+//             divTag.append("- " + author)
+//           })
+//         })
+//       }
+//   })
+// }
