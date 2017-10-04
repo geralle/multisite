@@ -1,34 +1,39 @@
 html, body{
   margin: 0;
+  height: 100%;
 }
 
 #logo{
   font-family: 'Secular One', sans-serif;
   font-size: 4em;
   display: flex;
-  width: 50%;
+  width: 100%;
   justify-content: flex-start;
-  margin: 20px 0 0 72px;
+  margin: 0 72px 0 72px;
   text-transform: uppercase;
-  color: #6BFFC3;
+  padding: 0 0 0 0;
+  /*justify-content: center;*/
 }
 
 #top{
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   font-size: 1em;
+  text-shadow: 3px 3px black;
+  color: #6BFFC3;
 }
 
 #stories{
   color: black;
-  margin: 0px 0 0 5px;
-  padding: 0px 0 0 0px;
+  margin: 0px 0 0 -5px;
+  padding: 19px 0 0 0px;
   font-size: 1em;
+  text-shadow: 3px 3px #6BFFC3;
 }
 
 #main-container{
   background-color: #FA675E;
-  height: 100%;
+  /*height: 100%;*/
 }
 
 #nav-selection-open{
@@ -49,7 +54,7 @@ html, body{
 }
 
 #open-menu-button{
-  color: #6BFFC3;
+  color: black;
 }
 
 /*@media (max-width: 770px) */
@@ -61,7 +66,7 @@ html, body{
   height: 100%;
   width: 65%;
   position: absolute;
-  margin: 0 0 0 357px;
+  margin: 0 0 0 35%;
 }
 
 #nav-header{

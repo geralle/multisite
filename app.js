@@ -7,7 +7,20 @@ var categories = ['technology','general','entertainment','music'];
 var categorySites = {technology:[],general:[],entertainment:[]};
 var heroEntry = document.getElementById('hero-container')
 var entriesContainer = document.getElementById('entries-container')
-var blocked = ["the-lad-bible","mtv-news-uk","bild","der-tagesspiegel","spiegel-online","the-hindu","the-times-of-india","gruenderszene","t3n"];
+var blocked = ["the-lad-bible","mtv-news-uk","bild","der-tagesspiegel","spiegel-online","the-hindu","the-times-of-india","gruenderszene","t3n","focus"];
+
+function blockSites(sites){
+  for(var i=0;i<Object.keys(sites).length;i++){
+    for(var x=0;x<sites[Object.keys(sites)[i]].length;x++){
+      for(var b=0;b<blocked.length;b++){
+        if(blocked[b]==sites[Object.keys(sites)[i]][x]){
+          sites[Object.keys(sites)[i]][x] = ""
+        }
+      }
+    }
+  }
+  return sites
+}
 
 function getData(){
   return fetch(sources)
@@ -45,39 +58,55 @@ function getData(){
   })
 }
 
-function blockSites(sites){
-  for(var i=0;i<Object.keys(sites).length;i++){
-    for(var x=0;x<sites[Object.keys(sites)[i]].length;x++){
-      for(var b=0;b<blocked.length;b++){
-        if(blocked[b]==sites[Object.keys(sites)[i]][x]){
-          sites[Object.keys(sites)[i]][x] = ""
-        }
-      }
-    }
-  }
-  return sites
-}
-
 function getTopic(){
   navSection = document.getElementById('nav-container')
   techTag = document.getElementById("tech")
   navSection.addEventListener("click",function(event){
-    console.log(event.srcElement.innerText)
+    var selectedTopic = event.srcElement.innerText
+    var topic = "";
+    switch(selectedTopic){
+      case 'TECH':
+        topic = "technology";
+        break;
+      case 'ENTERTAINMENT':
+        topic = "entertainment";
+        break;
+      case 'WORLD':
+        topic = 'general';
+        break;
+      default:
+        console.log('Nothing Selected')
+    }
+    appendContent(topic)
   })
 }
 
-function appendContent(){
+var topicList = []
+var topicArticle = ""
+function appendContent(topic){
   return getData().then(function(siteList){
-    // console.log(siteList)
+    // console.log(siteList[topic])
+    for(var i=0;i<siteList[topic].length; i++){
+      if(siteList[topic][i]!=""){
+        topicList.push(siteList[topic][i])
+      }
+    }
 
+    console.log(topicList)
+    topicList = emptyArr(topicList)
+    console.log(topicList.length)
+    // for(var t=0;t<topicList.length;t++){
+    //   topicArticle = articles + topicList[t]
+    //   console.log(topicArticle)
+    // }
   })
 }
 
-function checkNull(author, title, articleImg, articleUrl){
-  if(author === null || title === null || articleImg === null || articleUrl === null){
-    divTag.innerHTML = ""
-    appendHero();
+function emptyArr(topicList){
+  for(var i=0;i<topicList.length;i++){
+    topicList.pop()
   }
+  return topicList
 }
 
 var closeMenu = document.getElementById('close-menu')
