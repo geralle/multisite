@@ -98,16 +98,18 @@ function topicArticles(topic){
   })
 }
 
+var checkEmpty = `article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""`
+
 function appendArticles(articleSources){
   for(var i=0;i<articleSources.length;i++){
     fetch(articleSources[i]).then(function(response){
       return response.json().then(function(data){
         var randomArticle = Math.floor(Math.random() * data.articles.length)
         var article = data.articles[randomArticle]
-        if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
+        if(checkEmpty){
           var emptyEntry = true
           while(emptyEntry==true){
-            if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
+            if(checkEmpty){
               console.log(article)
               console.log("trying again..")
               var randomArticle = Math.floor(Math.random() * data.articles.length)
