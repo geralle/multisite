@@ -94,29 +94,28 @@ function topicArticles(topic){
       var randomSource = Math.floor(Math.random() * topicList.length)
       articleSources.push(articles + topicList[randomSource])
     }
-    appendArticles(articleSources)
+    findArticles(articleSources)
   })
 }
 
-var checkEmpty = `article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""`
-
-function appendArticles(articleSources){
+function findArticles(articleSources){
   for(var i=0;i<articleSources.length;i++){
     fetch(articleSources[i]).then(function(response){
       return response.json().then(function(data){
         var randomArticle = Math.floor(Math.random() * data.articles.length)
         var article = data.articles[randomArticle]
-        if(checkEmpty){
+        if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
           var emptyEntry = true
           while(emptyEntry==true){
-            if(checkEmpty){
+            if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
               console.log(article)
               console.log("trying again..")
               var randomArticle = Math.floor(Math.random() * data.articles.length)
               article = data.articles[randomArticle]
               console.log(article)
+            }else{
+              emptyEntry=false
             }
-            emptyEntry=false
           }
         }
         var articleAuthor = article.author
@@ -124,15 +123,24 @@ function appendArticles(articleSources){
         var articleDesc = article.description
         var articleUrl = article.url
         var articleImg = article.urlToImage
-        console.log(articleAuthor)
-        console.log(articleTitle)
-        console.log(articleDesc)
-        console.log(articleUrl)
-        console.log(articleImg)
-        console.log("------------")
+        appendArticles(articleAuthor,articleTitle,articleDesc,articleUrl,articleImg,i)
       })
     })
   }
+}
+
+function appendArticles(author,title,desc,url,img,idNum){
+  $("#entry-container").append(
+    `<div class="entry-posts" id="entry-post-${idNum}">
+      <img src="${img}" alt="" class="entry-img">
+      <div class="entry-desc" id="entry-desc-${idNum}">
+        <p class="entry-title" id="entry-title-${idNum}">${title}</p>
+        <div class="entry-by" id="entry-by-${idNum}">by
+          <span class="author-name" id=entry-author-${idNum}>${author}</span>
+        </div>
+      </div>
+    </div>`
+  )
 }
 
 var closeMenu = document.getElementById('close-menu')

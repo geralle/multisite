@@ -1,3 +1,28 @@
+function articleLoad(){
+  var initialArticles = ["https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=the-verge","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=engadget"]
+  for(var i=0;i<2;i++){
+    findArticles(initialArticles)
+  }
+}
+
+getTopic()
+articleLoad()
+
+
+
+
+`<div class="entry-posts" id="entry-post-${idNum}"></div>`)
+$("#entry-post-${idNum}").append(`
+  <img class="entry-img" src="${img}" alt="" >`)
+// $("#entry-post-1").append(`<div class="entry-desc" id="entry-desc-1"></div>`)
+// $("#entry-desc-1").append(`
+//   <p class="entry-title" id="entry-title-1">${desc}</p>`)
+// $("#entry-desc-1").append(`
+//   <div class="entry-by" id="entry-by-1">by </div>`)
+// $("#entry-by-1").append(`<span class="author-name" id=entry-author-0>Someone</span>`)
+
+
+
 // function heroSiteList(){
 //   var randSites = {};
 //   var randSitesList = [];
