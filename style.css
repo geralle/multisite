@@ -18,22 +18,22 @@ html, body{
 #top{
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+  position: relative;
   font-size: 1em;
-  text-shadow: 3px 3px black;
-  color: #6BFFC3;
+  text-shadow: 2px 9px rgb(0, 0, 0), 5px 9px black;
+  color: #fd8982;
 }
 
 #stories{
-  color: black;
-  margin: 0px 0 0 -5px;
-  padding: 19px 0 0 0px;
+  color: #fd8982;
+  margin: 0px 0 0 -20px;
+  padding: 28px 0 0 0px;
   font-size: 1em;
-  text-shadow: 3px 3px #6BFFC3;
+  text-shadow: 2px 9px rgb(0, 0, 0), 3px 9px black;
 }
 
 #main-container{
-  background-color: #FA675E;
-  /*height: 100%;*/
+  background-color: #fd8982;
 }
 
 #nav-selection-open{
@@ -61,7 +61,7 @@ html, body{
 #nav-selection{
   display: flex;
   flex-direction: column;
-  background-color: #6BFFC3;
+  background-color: #ffd962;
   align-items: center;
   height: 100%;
   width: 65%;
@@ -91,7 +91,6 @@ html, body{
   display: flex;
   width: 100%;
   justify-content: center;
-  /*margin-top: 66px;*/
   text-transform: uppercase;
 }
 
@@ -105,7 +104,7 @@ html, body{
 .nav-items{
   font-family: 'Secular One', sans-serif;
   background-color: black;
-  color: #6BFFC3;
+  color: #ffd962;
   font-size: 4em;
   width: 100%;
   text-align: center;
@@ -146,7 +145,7 @@ html, body{
 }
 
 #hero-title:hover{
-  color: #6BFFC3;
+  color: #ffd962;
 }
 
 #hero-by-line{
@@ -188,7 +187,7 @@ html, body{
 }
 
 .entry-title:hover{
-  color: #6BFFC3;
+  color: #ffd962;
 }
 
 .entry-by{

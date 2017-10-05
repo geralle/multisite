@@ -7,7 +7,7 @@ var categories = ['technology','general','entertainment','music'];
 var categorySites = {technology:[],general:[],entertainment:[]};
 var heroEntry = document.getElementById('hero-container')
 var entriesContainer = document.getElementById('entries-container')
-var blocked = ["the-lad-bible","mtv-news-uk","bild","der-tagesspiegel","spiegel-online","the-hindu","the-times-of-india","gruenderszene","t3n","focus"];
+var blocked = ["the-lad-bible","mtv-news-uk","bild","der-tagesspiegel","spiegel-online","the-hindu","the-times-of-india","gruenderszene","t3n","focus","wired-de"];
 
 function blockSites(sites){
   for(var i=0;i<Object.keys(sites).length;i++){
@@ -77,36 +77,60 @@ function getTopic(){
       default:
         console.log('Nothing Selected')
     }
-    appendContent(topic)
+    topicArticles(topic)
   })
 }
 
-var topicList = []
-var topicArticle = ""
-function appendContent(topic){
+function topicArticles(topic){
   return getData().then(function(siteList){
-    // console.log(siteList[topic])
+    var topicList = []
     for(var i=0;i<siteList[topic].length; i++){
       if(siteList[topic][i]!=""){
-        topicList.push(siteList[topic][i])
+        topicList.push(Object.values(siteList[topic][i])[0])
       }
     }
-
-    console.log(topicList)
-    topicList = emptyArr(topicList)
-    console.log(topicList.length)
-    // for(var t=0;t<topicList.length;t++){
-    //   topicArticle = articles + topicList[t]
-    //   console.log(topicArticle)
-    // }
+    var articleSources = []
+    for(var j=0;j<3;j++){
+      var randomSource = Math.floor(Math.random() * topicList.length)
+      articleSources.push(articles + topicList[randomSource])
+    }
+    appendArticles(articleSources)
   })
 }
 
-function emptyArr(topicList){
-  for(var i=0;i<topicList.length;i++){
-    topicList.pop()
+function appendArticles(articleSources){
+  for(var i=0;i<articleSources.length;i++){
+    fetch(articleSources[i]).then(function(response){
+      return response.json().then(function(data){
+        var randomArticle = Math.floor(Math.random() * data.articles.length)
+        var article = data.articles[randomArticle]
+        if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
+          var emptyEntry = true
+          while(emptyEntry==true){
+            if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
+              console.log(article)
+              console.log("trying again..")
+              var randomArticle = Math.floor(Math.random() * data.articles.length)
+              article = data.articles[randomArticle]
+              console.log(article)
+            }
+            emptyEntry=false
+          }
+        }
+        var articleAuthor = article.author
+        var articleTitle = article.title
+        var articleDesc = article.description
+        var articleUrl = article.url
+        var articleImg = article.urlToImage
+        console.log(articleAuthor)
+        console.log(articleTitle)
+        console.log(articleDesc)
+        console.log(articleUrl)
+        console.log(articleImg)
+        console.log("------------")
+      })
+    })
   }
-  return topicList
 }
 
 var closeMenu = document.getElementById('close-menu')
