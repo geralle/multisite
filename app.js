@@ -62,6 +62,7 @@ function getTopic(){
   navSection = document.getElementById('nav-container')
   techTag = document.getElementById("tech")
   navSection.addEventListener("click",function(event){
+    $("#entry-container").empty()
     var selectedTopic = event.srcElement.innerText
     var topic = "";
     switch(selectedTopic){
@@ -156,4 +157,12 @@ openMenu.addEventListener('click',function(){
   $('#nav-selection').show()
 })
 
+function articleLoad(){
+  var initialArticles = ["https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=the-verge","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=engadget"]
+  for(var i=0;i<2;i++){
+    findArticles(initialArticles)
+  }
+}
+
 getTopic()
+articleLoad()

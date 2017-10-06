@@ -24,6 +24,10 @@ html, body{
   text-shadow: 0px 9px rgb(0, 0, 0), 0px 9px black;
 }
 
+#homepage{
+  text-decoration: none;
+}
+
 #stories{
   color: #fd8982;
   margin: 0px 0 0 -20px;
@@ -57,7 +61,6 @@ html, body{
   color: black;
 }
 
-/*@media (max-width: 770px) */
 #nav-selection{
   display: flex;
   flex-direction: column;
@@ -67,7 +70,7 @@ html, body{
   width: 65%;
   position: absolute;
   margin: 0 0 0 35%;
-  padding: 0 0 100% 0;
+  padding: 0 0 5% 0;
 }
 
 #nav-header{
@@ -112,6 +115,12 @@ html, body{
   margin: 17px 0 0 0;
   padding: 20px 0 20px 0;
   text-transform: uppercase;
+}
+
+@media (max-width: 888px){
+  .nav-items{
+    font-size: 2em;
+  }
 }
 
 #entry-container{
