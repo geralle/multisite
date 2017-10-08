@@ -1,3 +1,39 @@
+<div id="nav-selection">
+  <div id="nav-header">
+    <i class="fa fa-times" aria-hidden="true" id="close-menu"></i>
+    <h2>Top Stories</h2>
+  </div>
+  <div id="nav-container">
+    <a id="tech" class="nav-items">Tech</a>
+    <a id="world" class="nav-items">World</a>
+    <a id="entertainment" class="nav-items">Entertainment</a>
+  </div>
+</div>
+
+<!-- <div id="open-menu">
+  <i class="fa fa-bars" aria-hidden="true" id="open-menu-button"></i>
+</div> -->
+
+#nav-selection{
+  display: flex;
+  flex-direction: column;
+  background-color: #ffd962;
+  align-items: center;
+  height: auto;
+  width: 65%;
+  position: absolute;
+  margin: 0 0 0 35%;
+  padding: 0 0 5% 0;
+}
+
+
+
+
+
+
+
+
+
 function articleLoad(){
   var initialArticles = ["https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=the-verge","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=engadget"]
   for(var i=0;i<2;i++){

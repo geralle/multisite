@@ -1,15 +1,13 @@
-$('#nav-selection').hide()
 var endpoint = "https://newsapi.org/v1/";
 var key = "?apikey=33ab9964e9c846c188f51c69d74f9576";
 var sources = endpoint + "sources/" + key;
 var articles = endpoint + "articles/" + key + "&source=";
-var categories = ['technology','general','entertainment','music'];
-var categorySites = {technology:[],general:[],entertainment:[]};
-var heroEntry = document.getElementById('hero-container')
-var entriesContainer = document.getElementById('entries-container')
-var blocked = ["the-lad-bible","mtv-news-uk","bild","der-tagesspiegel","spiegel-online","the-hindu","the-times-of-india","gruenderszene","t3n","focus","wired-de"];
+
+var initialArticles = ["https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=the-verge","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=engadget","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=the-guardian-au","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=time","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=bbc-news","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=ars-technica"]
 
 function blockSites(sites){
+  var blocked = ["the-lad-bible","mtv-news-uk","bild","der-tagesspiegel","spiegel-online","the-hindu","the-times-of-india","gruenderszene","t3n","focus","wired-de"];
+
   for(var i=0;i<Object.keys(sites).length;i++){
     for(var x=0;x<sites[Object.keys(sites)[i]].length;x++){
       for(var b=0;b<blocked.length;b++){
@@ -23,6 +21,8 @@ function blockSites(sites){
 }
 
 function getData(){
+  var categories = ['technology','general','entertainment','music'];
+  var categorySites = {technology:[],general:[],entertainment:[]};
   return fetch(sources)
     .then(function(response){
       return response.json()
@@ -63,7 +63,7 @@ function getTopic(){
   techTag = document.getElementById("tech")
   navSection.addEventListener("click",function(event){
     $("#entry-container").empty()
-    var selectedTopic = event.srcElement.innerText
+    var selectedTopic = event.target.id.toUpperCase()
     var topic = "";
     switch(selectedTopic){
       case 'TECH':
@@ -91,15 +91,15 @@ function topicArticles(topic){
       }
     }
     var articleSources = []
-    for(var j=0;j<3;j++){
+    for(var j=0;j<10;j++){
       var randomSource = Math.floor(Math.random() * topicList.length)
       articleSources.push(articles + topicList[randomSource])
     }
-    findArticles(articleSources)
+    findArticles(articleSources, '#entry-container')
   })
 }
 
-function findArticles(articleSources){
+function findArticles(articleSources, articleLocation){
   for(var i=0;i<articleSources.length;i++){
     fetch(articleSources[i]).then(function(response){
       return response.json().then(function(data){
@@ -107,16 +107,15 @@ function findArticles(articleSources){
         var article = data.articles[randomArticle]
         if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
           var emptyEntry = true
-          while(emptyEntry==true){
+          var counter = 0;
+          while(counter<=5){
             if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
-              console.log(article)
               console.log("trying again..")
               var randomArticle = Math.floor(Math.random() * data.articles.length)
-              article = data.articles[randomArticle]
-              console.log(article)
             }else{
               emptyEntry=false
             }
+            counter++;
           }
         }
         var articleAuthor = article.author
@@ -124,45 +123,56 @@ function findArticles(articleSources){
         var articleDesc = article.description
         var articleUrl = article.url
         var articleImg = article.urlToImage
-        appendArticles(articleAuthor,articleTitle,articleDesc,articleUrl,articleImg,i)
+        appendArticles(articleAuthor,articleTitle,articleDesc,articleUrl,articleImg,i,articleLocation)
       })
     })
   }
 }
 
-function appendArticles(author,title,desc,url,img,idNum){
-  $("#entry-container").append(
+function appendArticles(author,title,desc,url,img,idNum, articleLocation){
+  var heroSection =
+    `<img src="${img}" alt="" id="hero-img">
+    <div id="hero-container">
+      <p id="hero-title">${title}</p>
+      <p id="hero-desc">${desc}</p>
+      <p id="hero-by-line">by
+        <span id="hero-author-name">${author}</span>
+      </p>
+    </div>`
+
+  var entrySection =
     `<div class="entry-posts" id="entry-post-${idNum}">
       <img src="${img}" alt="" class="entry-img">
-      <div class="entry-desc" id="entry-desc-${idNum}">
+      <div class="single-entry-container" id="single-entry-${idNum}">
         <p class="entry-title" id="entry-title-${idNum}">${title}</p>
-        <div class="entry-by" id="entry-by-${idNum}">by
+        <p class="entry-desc" id="entry-desc-${idNum}">${desc}</p>
+        <p class="entry-by" id="entry-by-${idNum}">by
           <span class="author-name" id=entry-author-${idNum}>${author}</span>
-        </div>
+        </p>
       </div>
     </div>`
-  )
-}
 
-var closeMenu = document.getElementById('close-menu')
-var openMenu = document.getElementById('open-menu-button')
-
-closeMenu.addEventListener('click',function(){
-  $('#nav-selection').hide()
-  $('#open-menu-button').show()
-})
-
-openMenu.addEventListener('click',function(){
-  $('#open-menu-button').hide()
-  $('#nav-selection').show()
-})
-
-function articleLoad(){
-  var initialArticles = ["https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=the-verge","https://newsapi.org/v1/articles/?apikey=33ab9964e9c846c188f51c69d74f9576&source=engadget"]
-  for(var i=0;i<2;i++){
-    findArticles(initialArticles)
+  if(articleLocation=="#hero-image"){
+    $(articleLocation).append(heroSection)
+  }else{
+    $(articleLocation).append(entrySection)
   }
 }
 
+function generateHero() {
+  var randomHero = Math.floor(Math.random() * initialArticles.length)
+  var heroArticle = []
+  heroArticle.push(initialArticles[randomHero])
+  findArticles(heroArticle, "#hero-image")
+}
+
+function homepageLoad(){
+  $('#nav-selection').hide()
+  var closeMenu = document.getElementById('close-menu')
+  var openMenu = document.getElementById('open-menu-button')
+  generateHero()
+  findArticles(initialArticles, '#entry-container')
+}
+
+homepageLoad()
 getTopic()
-articleLoad()
