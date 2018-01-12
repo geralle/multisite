@@ -48,37 +48,12 @@ function getData(){
                     categorySites['entertainment'].push(entertainmentSites)
                     break;
                   default:
-                    console.log(newsData.sources[i].id)
                 }
               }
             }
           }
       return blockSites(categorySites)
     })
-  })
-}
-
-function getTopic(){
-  navSection = document.getElementById('nav-container')
-  techTag = document.getElementById("tech")
-  navSection.addEventListener("click",function(event){
-    $("#entry-container").empty()
-    var selectedTopic = event.target.id.toUpperCase()
-    var topic = "";
-    switch(selectedTopic){
-      case 'TECH':
-        topic = "technology";
-        break;
-      case 'ENTERTAINMENT':
-        topic = "entertainment";
-        break;
-      case 'WORLD':
-        topic = 'general';
-        break;
-      default:
-        console.log('Nothing Selected')
-    }
-    topicArticles(topic)
   })
 }
 
@@ -110,7 +85,6 @@ function findArticles(articleSources, articleLocation){
           var counter = 0;
           while(counter<=5){
             if(article.author==null||article.title==null||article.description==null||article.url==null||article.urlToImage==null||article.author==""||article.title==""||article.description==""||article.url==""||article.urlToImage==""){
-              console.log("trying again..")
               var randomArticle = Math.floor(Math.random() * data.articles.length)
             }else{
               emptyEntry=false
@@ -175,4 +149,3 @@ function homepageLoad(){
 }
 
 homepageLoad()
-getTopic()

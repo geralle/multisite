@@ -93,16 +93,15 @@ p{
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 10px 0 0 0;
+  margin: 10px 0 0 30px;
 }
 
 .nav-items{
   font-family: 'Secular One', sans-serif;
   color: black;
   font-size: 1.5em;
-  width: 26%;
+  width: auto;
   text-align: center;
-  margin: 0 0 0 30px;
   text-transform: uppercase;
   height: auto;
   display: flex;
@@ -122,7 +121,7 @@ p{
 
 #hero-image{
   border-top: 2px solid #ffd962;
-  margin: 11px 72px 16px 72px;
+  margin: 11px 30px 16px 30px;
   padding: 15px 0px 0 0px;
   display: flex;
   flex-direction: column;
@@ -162,22 +161,18 @@ p{
   margin-top: 10px;
 }
 
-#hero-author-name{
-  /*color: #6BFFC3;*/
-}
-
 .entry-posts{
   border-top: 2px solid #ffd962;
   display: flex;
   flex-direction: row;
-  margin: 15px 72px 0 72px;
+  margin: 11px 30px 16px 30px;
   padding: 15px 0px 0 0px;
   justify-content: center;
 }
 
 .entry-img{
-  height: 0%;
   width: 40%;
+  height: 0%;
 }
 
 .single-entry-container{
@@ -210,26 +205,84 @@ p{
   font-size: 1em;
 }
 
-.author-name{
-  /*color: #6BFFC3;*/
-}
-
 #footer{
   font-family: 'Arimo', sans-serif;
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 10px 0 0 0;
   border-top: 2px solid #ffd962;
   display: flex;
   justify-content: center;
   margin: 15px 72px 0px 72px;
-  padding: 33px 0 1% 0;
-  height: 60px;
+  padding: 16px 0 0 0;
+  height: 40px;
 }
 
-@media (max-width: 888px){
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 736px) {
+  #nav-selection-open {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
+  }
+
+  #open-menu {
+    font-size: 35px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    order: 1;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  #homepage {
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+  }
+
+  #logo {
+    font-family: 'Secular One', sans-serif;
+    font-size: 3em;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 0 8.5%;
+    text-transform: uppercase;
+    padding: 0 0 0 0;
+  }
+
+  #top {
+    color: #fd8982;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    position: relative;
+    font-size: 1.2em;
+    text-shadow: 0px 10px rgb(0, 0, 0), 0px 8px black;
+  }
+
+  #stories {
+    color: #fd8982;
+    margin: 0px 0 0 -20px;
+    padding: 28px 0 0 0px;
+    font-size: 1.2em;
+    text-shadow: 0px 10px rgb(0, 0, 0), 0px 8px black;
+  }
+
+  #nav-container {
+    display: flex;
+    width: 72%;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 100%;
+    margin: 10px 0 0 30px;
+  }
+
   .nav-items{
     font-size: 1.2em;
-    margin: 0 0 0 0px;
     padding: 0 0 0 0;
   }
 
@@ -266,66 +319,5 @@ p{
   .entry-by{
     font-size: 1em;
     margin: 3px 0 0 0;
-  }
-}
-
-@media (max-width: 607px){
-  #nav-selection-open {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    width: 100%;
-  }
-
-  #open-menu {
-    font-size: 35px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    order: 1;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-  }
-
-  #homepage {
-    text-decoration: none;
-    width: 100%;
-    display: flex;
-    margin: 0 8%;
-  }
-
-  #logo {
-    font-family: 'Secular One', sans-serif;
-    font-size: 3em;
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    margin: 0 72px 0 72px;
-    text-transform: uppercase;
-    padding: 0 0 0 0;
-  }
-
-  #top {
-    color: #fd8982;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    position: relative;
-    text-shadow: 0px 5px rgb(0, 0, 0), 0px 7px black;
-  }
-
-  #stories {
-    color: #fd8982;
-    margin: 0px 0 0 -20px;
-    padding: 28px 0 0 0px;
-    text-shadow: 0px 5px rgb(0, 0, 0), 0px 7px black;
-  }
-
-  #nav-container {
-    display: flex;
-    flex-direction: row;
-    width: 72%;
-    margin: 0 72px 0 72px;
-    justify-content: space-between;
   }
 }
