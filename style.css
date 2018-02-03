@@ -9,7 +9,7 @@ p{
 
 #logo{
   font-family: 'Secular One', sans-serif;
-  font-size: 4em;
+  font-size: 9vw;
   display: flex;
   width: 100%;
   justify-content: flex-start;
@@ -217,27 +217,7 @@ p{
   height: 40px;
 }
 
-@media only screen
-and (min-device-width : 300px)
-and (max-device-width : 736px) {
-  #nav-selection-open {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    width: 100%;
-  }
-
-  #open-menu {
-    font-size: 35px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    order: 1;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-  }
-
+@media only screen and (max-width: 960px) {
   #homepage {
     text-decoration: none;
     width: 100%;
@@ -246,11 +226,10 @@ and (max-device-width : 736px) {
 
   #logo {
     font-family: 'Secular One', sans-serif;
-    font-size: 3em;
     display: flex;
     width: 100%;
     justify-content: flex-start;
-    margin: 0 8.5%;
+    margin: 0 0 0 20px;
     text-transform: uppercase;
     padding: 0 0 0 0;
   }
@@ -260,16 +239,14 @@ and (max-device-width : 736px) {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     position: relative;
-    font-size: 1em;
-    text-shadow: 0px 10px rgb(0, 0, 0), 0px 8px black;
+    text-shadow: 0px 6px rgb(0, 0, 0), 0px 6px black;
   }
 
   #stories {
     color: #fd8982;
     margin: 0px 0 0 -20px;
     padding: 28px 0 0 0px;
-    font-size: 1em;
-    text-shadow: 0px 10px rgb(0, 0, 0), 0px 8px black;
+    text-shadow: 0px 6px rgb(0, 0, 0), 0px 6px black;
   }
 
   #nav-container {
