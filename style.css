@@ -9,7 +9,7 @@ p{
 
 #logo{
   font-family: 'Secular One', sans-serif;
-  font-size: 9vw;
+  font-size: 4vw;
   display: flex;
   width: 100%;
   justify-content: flex-start;
@@ -23,7 +23,6 @@ p{
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   position: relative;
-  font-size: 1em;
   text-shadow: 0px 9px rgb(0, 0, 0), 0px 9px black;
 }
 
@@ -35,7 +34,6 @@ p{
   color: #fd8982;
   margin: 0px 0 0 -20px;
   padding: 28px 0 0 0px;
-  font-size: 1em;
   text-shadow: 0px 9px rgb(0, 0, 0), 0px 9px black;
 }
 
@@ -226,6 +224,7 @@ p{
 
   #logo {
     font-family: 'Secular One', sans-serif;
+    font-size: 5vw;
     display: flex;
     width: 100%;
     justify-content: flex-start;
